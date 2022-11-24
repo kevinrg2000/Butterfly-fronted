@@ -9,10 +9,10 @@ const QuestionsPage = (face) => {
 
   return (
     <>
-      <div className="bg-gradient-to-l from-blue-450 to-blue-350 flex h-screen ">
+      <div className="bg-gradient-to-l from-blue-450 to-blue-350 flex max-h-full ">
         <img className="h-7 absolute m-1" src={butterfly} alt="img" />
 
-        <div className="bg-gradient-to-b from-blue-450 to-blue-350  w-10 h-full "></div>
+        <div className="bg-gradient-to-b from-blue-450 to-blue-350  w-10 max-h-full "></div>
         <div className=" flex-row">
           <ModFace face={face} />
 

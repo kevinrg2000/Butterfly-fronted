@@ -10,6 +10,7 @@ module.exports = {
           350: "rgb(20 101 110)",
           450: "#124247",
           150: "#2ce6ce",
+          550: "#757575",
         },
         },
         slate: {
@@ -21,5 +22,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
