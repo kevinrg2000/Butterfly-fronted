@@ -99,7 +99,7 @@ const ModFace = (face) => {
               role="button"
             />
             <div className="items-center justify-center font-bold self-center">
-              <div className=" text-white text-xl"> {pageData[2]?.description}</div>
+              <div className=" text-white text-xl"> {pageData[5]?.description}</div>
               <div className="flex flex-row">
               <h2 className="text-slate-200 ">Your answers will </h2>
               
@@ -121,7 +121,7 @@ const ModFace = (face) => {
               role="button"
             />
             <div className="items-center justify-center  font-bold self-center">
-              <div className=" text-white text-xl"> {pageData[5]?.description}</div>
+              <div className=" text-white text-xl"> {pageData[2]?.description}</div>
               <div className="flex flex-row">
               <h2 className="text-slate-200 ">Your answers will </h2>
               
