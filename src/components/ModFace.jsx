@@ -4,7 +4,7 @@ import clienteAxios from "../config/clienteAxios";
 
 const ModFace = (face) => {
   //States
-
+  const navigate = useNavigate();
   const [faces, setFaces] = useState(face.face.face);
   const [banner, setBanner] = useState(
     "https://assets.butterfly.ai/email-images/bf-banner.v2.png"
