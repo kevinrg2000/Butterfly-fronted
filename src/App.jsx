@@ -1,9 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import QuestionsPage from './paginas/QuestionsPage'
+import EndPage from './paginas/EndPage'
 
 import MainPage from './paginas/MainPage'
 import Layout from './layouts/Layout'
+
 
 
 function App() {
@@ -15,7 +17,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Layout />}>
               <Route index element={<MainPage />} />
-                  <Route path="0" element={<QuestionsPage face={0} />} />
+                  <Route path="0" element={<EndPage />} />
                   <Route path="1" element={<QuestionsPage face={1}/>} />
                   <Route path="2" element={<QuestionsPage face={2}/>} />
                   <Route path="3" element={<QuestionsPage face={3}/>} />

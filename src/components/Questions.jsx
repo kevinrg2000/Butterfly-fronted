@@ -127,7 +127,7 @@ const Questions = (props) => {
       {
           <div className="bg-white w-100 h-80 ml-10 mt-10 mb-5 rounded">
             <div className="ml-4 pt-2 text-xs font-extralight">
-              {questions[0]?.questionNumber} of {5}
+              {1} of {5}
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
@@ -175,7 +175,7 @@ const Questions = (props) => {
       {
           <div className="bg-white w-100 h-80 ml-10 mt-10 mb-5 rounded">
             <div className="ml-4 pt-2 text-xs font-extralight">
-              {questions[1]?.questionNumber} of {5}
+              {2} of {5}
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
@@ -224,7 +224,7 @@ const Questions = (props) => {
       {
           <div className="bg-white w-100 h-80 ml-10 mt-10 mb-5 rounded">
             <div className="ml-4 pt-2 text-xs font-extralight">
-              {questions[2]?.questionNumber} of {5}
+              {3} of {5}
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
@@ -273,7 +273,7 @@ const Questions = (props) => {
       {
           <div className="bg-white w-100 h-80 ml-10 mt-10 mb-5 rounded">
             <div className="ml-4 pt-2 text-xs font-extralight">
-              {questions[3]?.questionNumber} of {5}
+              {4} of {5}
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
@@ -322,7 +322,7 @@ const Questions = (props) => {
       {
           <div className="bg-white w-100 h-80 ml-10 mt-10 mb-5 rounded">
             <div className="ml-4 pt-2 text-xs font-extralight">
-              {questions[4]?.questionNumber} of {5}
+              {5} of {5}
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
