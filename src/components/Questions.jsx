@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link, useNavigate, Navigate } from "react-router-dom";
 import clienteAxios from "../config/clienteAxios";
 
 const Questions = (props) => {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState({});
   const [count, setcount] = useState(0);
   const [count1, setcount1] = useState(0);
@@ -14,7 +15,17 @@ const Questions = (props) => {
   const [framework2, setframework2] = useState(0);
   const [framework3, setframework3] = useState(0);
   const [framework4, setframework4] = useState(0);
-;
+  const [textArea, setTextArea] = useState();
+  const [textArea1, setTextArea1] = useState();
+  const [textArea2, setTextArea2] = useState();
+  const [textArea3, setTextArea3] = useState();
+  const [textArea4, setTextArea4] = useState();
+  const [answer, setAnswer] = useState();
+  const [answer1, setAnswer1] = useState();
+  const [answer2, setAnswer2] = useState();
+  const [answer3, setAnswer3] = useState();
+  const [answer4, setAnswer4] = useState();
+
   useEffect(() => {
     const getinfo = async () => {
       try {
@@ -27,54 +38,89 @@ const Questions = (props) => {
     };
     getinfo();
   }, []);
+  useEffect(() => {
+    const getinfo = async () => {
+      try {
+        if(props.submit){
+          const { data } = await clienteAxios.post('/answer', {answer,answer1,answer2,answer3,answer4})
+          navigate("/")
+        }
+      } catch (error) {
+        console.log("error:", error);
+      }
+    };
+    getinfo();
+  }, [props.submit]);
 
 
   useEffect(() => {
-    
-    if (framework != 0 & framework1 != 0 & framework2 != 0 & framework3 != 0 & framework4 != 0) {
-      props.sendForm(false)
+    if (
+      (framework != 0) &
+      (framework1 != 0) &
+      (framework2 != 0) &
+      (framework3 != 0) &
+      (framework4 != 0)
+    ) {
+      props.sendForm(false);
     }
-    console.log('framework:',framework);
-     console.log('framework1:',framework1);
-     console.log('framework2:',framework2);
-     console.log('framework3:',framework3);
-     console.log('framework4:',framework4);
-    
-    
+    setAnswer({
+      questionNumber: questions[0]?.questionNumber,
+      description: questions[0]?.description,
+      answerString: textArea,
+      answerNumber: framework,
+    });
+    setAnswer1({
+      questionNumber: questions[1]?.questionNumber,
+      description: questions[1]?.description,
+      answerString: textArea1,
+      answerNumber: framework1,
+    });
+    setAnswer2({
+      questionNumber: questions[2]?.questionNumber,
+      description: questions[2]?.description,
+      answerString: textArea2,
+      answerNumber: framework2,
+    });
+    setAnswer3({
+      questionNumber: questions[3]?.questionNumber,
+      description: questions[3]?.description,
+      answerString: textArea3,
+      answerNumber: framework3,
+    });
+    setAnswer4({
+      questionNumber: questions[4]?.questionNumber,
+      description: questions[4]?.description,
+      answerString: textArea3,
+      answerNumber: framework4,
+    });
   }, [framework, framework1, framework2, framework3, framework4]);
 
 
-
-
-  const fromControl= e =>{
+  const frameworkControl = (e) => {
+    setframework(e.target.value);
+    setcount(1);
+      
+  };
+  const frameworkControl1 = (e) => {
+    setframework1(e.target.value);
+    setcount1(1);
+     
+  };
+  const frameworkControl2 = (e) => {
+    setframework2(e.target.value);
+    setcount2(1);
+     
+  };
+  const frameworkControl3 = (e) => {
+    setframework3(e.target.value);
+    setcount3(1);
     
-  }
-  const frameworkControl= e =>{
-    setframework(e.target.value)
-    fromControl()
-    setcount(1)
+  };
+  const frameworkControl4 = (e) => {
+    setframework4(e.target.value);
+    setcount4(1);
     
-  }
-  const frameworkControl1= e =>{
-    setframework1(e.target.value)
-    fromControl()
-    setcount1(1)
-  }
-  const frameworkControl2= e =>{
-    setframework2(e.target.value)
-    fromControl()
-    setcount2(1)
-  }
-  const frameworkControl3= e =>{
-    setframework3(e.target.value)
-    fromControl()
-    setcount3(1)
-  }
-  const frameworkControl4= e =>{
-    setframework4(e.target.value)
-    fromControl()
-    setcount4(1)
-  }
+  };
 
   return (
     <>
@@ -85,7 +131,7 @@ const Questions = (props) => {
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
-              Roles and Responsibilities
+              {questions[0]?.type}
             </div>
             <div className=" ml-4 mt-6  text-2xl  font-semibold text-blue-550 text-left">
               {questions[0]?.description}
@@ -118,7 +164,10 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anything to add?"></textarea>
+              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              value={textArea}
+              onChange={e=>setTextArea(e.target.value)}
+              placeholder="Anything to add for"></textarea>
             )}
           </div>
 
@@ -130,7 +179,7 @@ const Questions = (props) => {
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
-              Roles and Responsibilities
+            {questions[1]?.type}
             </div>
             <div className=" ml-4 mt-6  text-2xl  font-semibold text-blue-550 text-left">
               {questions[1]?.description}
@@ -164,7 +213,10 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anything to add?"></textarea>
+              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              value={textArea1}
+              onChange={e=>{setTextArea1(e.target.value)}}
+              placeholder="Anything to add?"></textarea>
             )}
           </div>
 
@@ -176,7 +228,7 @@ const Questions = (props) => {
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
-              Roles and Responsibilities
+              {questions[2]?.type}
             </div>
             <div className=" ml-4 mt-6  text-2xl  font-semibold text-blue-550 text-left">
               {questions[2]?.description}
@@ -210,7 +262,10 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anything to add?"></textarea>
+              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              value={textArea2}
+              onChange={e=>{setTextArea2(e.target.value)}}
+              placeholder="Anything to add?"></textarea>
             )}
           </div>
 
@@ -222,7 +277,7 @@ const Questions = (props) => {
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
-              Roles and Responsibilities
+              {questions[3]?.type}
             </div>
             <div className=" ml-4 mt-6  text-2xl  font-semibold text-blue-550 text-left">
               {questions[3]?.description}
@@ -256,7 +311,10 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none flex p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anything to add?"></textarea>
+              <textarea className=" ml-6 mb-5 resize-none flex p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              value={textArea3}
+              onChange={e=>{setTextArea3(e.target.value)}}
+              placeholder="Anything to add?"></textarea>
             )}
           </div>
 
@@ -268,7 +326,7 @@ const Questions = (props) => {
             </div>
 
             <div className=" ml-4 mt-2 scroll-m-10 text-sm  font-semibold text-teal-350">
-              Roles and Responsibilities
+              {questions[4]?.type}
             </div>
             <div className=" ml-4 mt-6  text-2xl  font-semibold text-blue-550 text-left">
               {questions[4]?.description}
@@ -302,7 +360,10 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Anything to add?"></textarea>
+              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              value={textArea4}
+              onChange={e=>{setTextArea4(e.target.value)}}              
+              placeholder="Anything to add?"></textarea>
             )}
           </div>
 

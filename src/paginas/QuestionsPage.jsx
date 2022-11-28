@@ -9,7 +9,7 @@ const QuestionsPage = (face) => {
     "https://butterflyai.wpenginepowered.com/wp-content/uploads/2019/05/ButterflyIcon.svg"
     );
     const [sendForm, setSendForm] = useState(true)
-
+    const [submit, setSubmit] = useState(false);
   return (
     <>
       <div className="bg-gradient-to-l from-blue-450 to-blue-350 flex max-h-full ">
@@ -21,9 +21,9 @@ const QuestionsPage = (face) => {
           <h1 className="text-white font-bold ml-10 text-xl">
             Do you agree with the following statements:
           </h1>
-          <Questions sendForm={setSendForm}/>
+          <Questions sendForm={setSendForm} submit={submit} setSubmit={setSubmit}/>
           <AnythingToAd />
-          <Send send={sendForm}/>
+          <Send send={sendForm} submit={submit} setSubmit={setSubmit}/>
 
           <div className="ml-10 text-sm mt-10 text-white">Butterfly.</div>
           <div className="ml-10 text-sm mt-1 text-blue-150">Support Terms of Service Privacy Policy</div>
