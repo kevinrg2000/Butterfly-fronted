@@ -49,11 +49,13 @@ const ModFace = (face) => {
     <>
     
       {changeFace === 0?
-        <div className="flex flex-col ml-10 mt-10 mr-16   bg-blue-850">
+      <div >
+        <div className="flex flex-col ml-10 mt-10 mr-16 rounded  bg-blue-850">
           <div className=" text-center text-white font-bold m-2 text-lg"> Did you make a mistake? Please select your correct mood:
           <Faces ChangeFace={setChangeFace} Faces={setFaces}/>
           </div>
         </div>
+      </div>
         :
       
       <div className="flex flex-row  h-60">
