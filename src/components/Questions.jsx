@@ -43,7 +43,7 @@ const Questions = (props) => {
       try {
         if(props.submit){
           const { data } = await clienteAxios.post('/answer', {answer,answer1,answer2,answer3,answer4})
-          navigate("/")
+          navigate("/0")
         }
       } catch (error) {
         console.log("error:", error);
@@ -249,8 +249,8 @@ const Questions = (props) => {
             </div>
 
             <div className="flex flex-row justify-between">
-              <div className="m-6 font-semibold">Disagree</div>
-              <div className="m-6 font-semibold">Agree</div>
+              <div className="m-4 font-semibold">Disagree</div>
+              <div className="m-4 font-semibold">Agree</div>
             </div>
             {count2 === 0 ? (
               <div
@@ -262,7 +262,7 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              <textarea className=" ml-6 mb-6 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
               value={textArea2}
               onChange={e=>{setTextArea2(e.target.value)}}
               placeholder="Anything to add?"></textarea>
@@ -347,8 +347,8 @@ const Questions = (props) => {
             </div>
 
             <div className="flex flex-row justify-between">
-              <div className="m-6 font-semibold">Disagree</div>
-              <div className="m-6 font-semibold">Agree</div>
+              <div className="m-4 font-semibold">Disagree</div>
+              <div className="m-4 font-semibold">Agree</div>
             </div>
             {count4 === 0 ? (
               <div
@@ -360,7 +360,7 @@ const Questions = (props) => {
                 Add comment
               </div>
             ) : (
-              <textarea className=" ml-6 mb-5 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+              <textarea className=" ml-6 mb-6 resize-none block p-2.5 w-11/12 text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
               value={textArea4}
               onChange={e=>{setTextArea4(e.target.value)}}              
               placeholder="Anything to add?"></textarea>

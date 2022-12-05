@@ -30,7 +30,7 @@ const mainPage = () => {
     const getinfo = async () => {
       try {
         const { data } = await clienteAxios("/infoPage");
-        console.log("data:");
+        
         setPageData(data);
       } catch (error) {
         console.log("error:", error);
@@ -46,11 +46,11 @@ const mainPage = () => {
         <img className="h-28 " src={banner} alt="img" />
         </div>
         <div className=" bg-slate-100 w-100 h-60">
-          <div className="flex  justify-center">
-            <div className="flex text-sm">{pageData[0]?.description}</div>
-            <div className="">{" would like to know:"}</div>
+          <div className="flex mt-5 justify-center">
+            <div className="flex mt-1 text-sm font-semibold">{pageData[0]?.description}</div>
+            <div className="flex font">{" would like to know:"}</div>
           </div>
-            <div className="text-center text-2xl text-stone-500 m-6" >{" How is your week going?"}</div>
+            <div className="text-center font-bold text-2xl text-stone-500 m-6" >{" How is your week going?"}</div>
           <div className="flex flex-row justify-center items-center">
             <img
               className="w-20 h-20 "
@@ -99,16 +99,18 @@ const mainPage = () => {
               role="button"
             />
           </div>
-          <div className="flex flex-row justify-center items-center">
+          <div className="flex mt-2 text-sm flex-row justify-center items-center bg-blue-150 mx-44 text-white">
           {"Your answer will always remain anonymous"}
           </div>
         </div>
-        <div className=" text-center m 0 0 1rm ">
+        <div className=" text-center mt-8 0 1rm text-sm text-blue-900">
           Butterfly. Your Team's Happiness Manager.
         </div>
-        <div className=" ">
-          Appynest, Inc. - 604 East Eleven Street, NY 10009 ©2022 Appynest, Inc.
-          All rights reserved.
+        <div className=" text-center  text-white text-sm ">
+          Appynest, Inc. - 604 East Eleven Street, NY 10009 
+        </div>
+        <div className=" text-center  text-white text-sm ">
+        ©2022 Appynest, Inc. All rights reserved.
         </div>
       </div>
     </>
